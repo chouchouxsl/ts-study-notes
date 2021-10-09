@@ -1,56 +1,36 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 类的基本使用
  */
-var MyClass = /** @class */ (function () {
+class MyClass {
+    // 静态属性
+    static cname = 'xxx';
+    // 成员属性
+    age; // 公有属性
+    sex; // 私有属性 不能在声明它的类的外部访问
+    size; // 受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
+    // 私有字段 ES提供 TS支持  具体和 private差不多
+    #character; // 前面不可以使用修饰符
     // 构造器
-    function MyClass(age, sex, size, character) {
-        // 私有字段 ES提供 TS支持  具体和 private差不多
-        _MyClass_character.set(this, void 0); // 前面不可以使用修饰符
+    constructor(age, sex, size, character) {
         this.age = age;
         this.sex = sex;
         this.size = size;
-        __classPrivateFieldSet(this, _MyClass_character, character, "f");
+        this.#character = character;
     }
     // 静态方法
-    MyClass.fly = function () {
-        console.log(this.cname + "\u4F1A\u98DE");
+    static fly() {
+        console.log(`${this.cname}会飞`);
         // console.log('this.age :>> ', this.age); // 报错 静态方法访问不到类属性
-    };
+    }
     // 静态属性
-    MyClass.prototype.jup = function () {
+    jup() {
         // console.log(`${this.cname}会跳`) // 报错  访问不到静态属性
         console.log('this.age :>> ', this.age);
-    };
-    var _MyClass_character;
-    _MyClass_character = new WeakMap();
-    // 静态属性
-    MyClass.cname = 'xxx';
-    return MyClass;
-}());
-var myClass = new MyClass(12, false, 33, '好');
+    }
+}
+let myClass = new MyClass(12, false, 33, '好');
 console.log('MyClass.cname :>> ', MyClass.cname);
 MyClass.fly();
 console.log('myClass.age :>> ', myClass.age);
@@ -61,28 +41,24 @@ myClass.jup();
 /**
  * 访问器
  */
-var Visitor = /** @class */ (function () {
-    function Visitor(_name) {
+class Visitor {
+    _name;
+    constructor(_name) {
         this._name = _name;
     }
-    Object.defineProperty(Visitor.prototype, "name", {
-        get: function () {
-            return this._name;
-        },
-        set: function (name) {
-            if (name === 'zs') {
-                this._name = name;
-            }
-            else {
-                throw new Error('只能设置为zs');
-            }
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Visitor;
-}());
-var visitor = new Visitor('xxx');
+    get name() {
+        return this._name;
+    }
+    set name(name) {
+        if (name === 'zs') {
+            this._name = name;
+        }
+        else {
+            throw new Error('只能设置为zs');
+        }
+    }
+}
+const visitor = new Visitor('xxx');
 console.log('visitor :>> ', visitor);
 // console.log('visitor :>> ', visitor._name) // 不可以直接访问私有属性
 console.log('getName :>> ', visitor.name);
@@ -91,31 +67,28 @@ console.log('getName :>> ', visitor.name);
 /**
  * 类的继承
  */
-var Anamal = /** @class */ (function () {
-    function Anamal(name) {
+class Anamal {
+    name;
+    constructor(name) {
         this.name = name;
     }
-    Anamal.prototype.move = function (distanceInMeters) {
-        if (distanceInMeters === void 0) { distanceInMeters = 0; }
-        console.log(this.name + " moved " + distanceInMeters + "m.");
-    };
-    return Anamal;
-}());
-var Dog = /** @class */ (function (_super) {
-    __extends(Dog, _super);
-    // 可不写 默认会把父类的属性继承过来
-    function Dog(name, age) {
-        var _this = _super.call(this, name) || this;
-        _this.age = age;
-        return _this;
+    move(distanceInMeters = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
     }
-    Dog.prototype.call = function () {
+}
+class Dog extends Anamal {
+    age;
+    // 可不写 默认会把父类的属性继承过来
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+    }
+    call() {
         console.log('狗能叫');
-        console.log('super :>> ', _super.prototype.move);
-    };
-    return Dog;
-}(Anamal));
-var dog = new Dog('狗', 12);
+        console.log('super :>> ', super.move);
+    }
+}
+const dog = new Dog('狗', 12);
 console.log('dog :>> ', dog.name);
 dog.move(10);
 dog.call();
@@ -124,39 +97,30 @@ dog.call();
  * 使用 abstract 关键字声明的类，我们称之为抽象类。抽象类不能被实例化，因为它里面包含一个或多个抽象方法。
  */
 // 抽象类
-var MM = /** @class */ (function () {
-    function MM(name) {
+class MM {
+    name;
+    constructor(name) {
         this.name = name;
     }
-    return MM;
-}());
-var CC = /** @class */ (function (_super) {
-    __extends(CC, _super);
-    function CC() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.age = 111;
-        return _this;
-    }
-    CC.prototype.say = function () {
+}
+class CC extends MM {
+    age = 111;
+    say() {
         return '';
-    };
-    return CC;
-}(MM));
-var cc = new CC('xxx');
+    }
+}
+let cc = new CC('xxx');
 console.log('cc :>> ', cc);
 /**
  * 类方法的重载
  */
-var XX = /** @class */ (function () {
-    function XX() {
-    }
-    XX.prototype.say = function (name) {
+class XX {
+    say(name) {
         if (typeof name === 'string') {
             return '';
         }
         else {
             return 111;
         }
-    };
-    return XX;
-}());
+    }
+}

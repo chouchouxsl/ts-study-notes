@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var a = {
+let a = {
     name: 'xxx'
 };
-var b = {
+let b = {
     name: 'xxx',
-    break: function () { }
+    break() { }
 };
 // 可以赋值 b是a的子集 b更具体 a更宽泛
 a = b;
-var a1;
-var a2;
+let a1;
+let a2;
 // a2 = a1
 // a1 = a2
 /**
@@ -18,11 +18,11 @@ var a2;
  * 因此b = a不成立（父类型不能赋值给子类型），而a = b成立（子类型可以赋值给父类型）
  */
 /* 协变 */
-var c;
-var d = [
+let c;
+let d = [
     {
         name: 'sss',
-        break: function () { }
+        break() { }
     }
 ];
 // 兼容，可以赋值

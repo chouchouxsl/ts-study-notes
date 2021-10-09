@@ -1,37 +1,23 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var typ = { name: 'xxx', age: 1231 };
+const typ = { name: 'xxx', age: 1231 };
 function toArray(x) {
     return [x];
 }
-var Eg2 = /** @class */ (function () {
-    function Eg2() {
-        this.name = '';
-        this.age = 1;
-        this.home = '';
-    }
-    return Eg2;
-}());
+class Eg2 {
+    name = '';
+    age = 1;
+    home = '';
+}
 //{ a: any, b: any, c: any }
-var xcObjx = { a: 12, b: '', c: true };
+const xcObjx = { a: 12, b: '', c: true };
 function fucH1() {
     throw new Error('1213');
 }
-var a = 3;
-var bar1 = 'xxx';
+const a = 3;
+const bar1 = 'xxx';
 // 验证
-var Jx = {
+const Jx = {
     name: 'xxx',
     age: 12,
     home: (function a() {
@@ -58,5 +44,9 @@ function mustTakeLength(arg) {
 // }
 /* 解决方案 */
 function makeUser(x) {
-    return __assign(__assign({}, x), { id: x.id, name: 'sssss' });
+    return {
+        ...x,
+        id: x.id,
+        name: 'sssss'
+    };
 }

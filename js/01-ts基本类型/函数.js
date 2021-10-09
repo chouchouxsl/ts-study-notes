@@ -14,11 +14,7 @@ function createUserId3(name, id, age) {
     return name + id;
 }
 // 剩余参数
-function push(array) {
-    var items = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        items[_i - 1] = arguments[_i];
-    }
+function push(array, ...items) {
     items.forEach(function (item) {
         array.push(item);
     });

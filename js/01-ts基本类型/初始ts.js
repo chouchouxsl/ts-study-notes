@@ -13,16 +13,16 @@ gen({
     // lastName: 'xxXPathExpression'
 });
 //  =================
-var a = 1212;
+let a = 1212;
 a = 32;
 // a = true;
 // =================
-var b = '1212';
+let b = '1212';
 b = true;
 b = 123;
 b = a;
 // ================
-var c = '2121';
+let c = '2121';
 c = 123;
 c = b;
 // a = b;
@@ -30,15 +30,15 @@ c = b;
 /*
   数组
 */
-var arr = [1, 3, 4];
-var arr2 = ['asd', 'wsew'];
+const arr = [1, 3, 4];
+const arr2 = ['asd', 'wsew'];
 arr.unshift(1212);
 arr2.push('1111');
 // ================
 /*
   元祖
 */
-var arr3 = ['12', 123];
+let arr3 = ['12', 123];
 // arr3 = [213, 'asd'];
 arr3 = ['asd', 123];
 // ===============
@@ -51,30 +51,30 @@ var Color;
     Color[Color["blue"] = 2] = "blue";
     Color[Color["pink"] = 3] = "pink";
 })(Color || (Color = {}));
-var pink = Color.pink;
+let pink = Color.pink;
 console.log('pink :>> ', pink);
-var blue = Color[2];
+let blue = Color[2];
 console.log('blue :>> ', blue);
 //===================
 function jum() {
     console.log('哈哈哈 :>> ', '哈哈哈');
 }
-var jup = function () {
+const jup = () => {
     return;
 };
 // =====================
 // const obj: object = null
 // const obj1: object = undefined
-var obj3 = [];
-var obj5 = function () { };
+const obj3 = [];
+const obj5 = function () { };
 // const obj6: object = 1111;
-var obj4;
+let obj4;
 obj4 = {
     name: 'zs',
     age: 13,
     sxxx: 'xxxx'
 };
-var fnc;
+let fnc;
 // ====================
 /*
 联合类型 和  类型断言
@@ -84,7 +84,7 @@ function strLength(str) {
 }
 console.log('strLength :>> ', strLength(123123213123));
 exports.ex = '2';
-var xxx = {
+const xxx = {
     nama: 11,
     age: '12'
 };

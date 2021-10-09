@@ -2,41 +2,41 @@
 // Boolean
 var Bool;
 (function (Bool) {
-    var falg = true;
+    let falg = true;
     falg = false;
 })(Bool || (Bool = {}));
 // Number
 var Num;
 (function (Num) {
-    var num = 1;
+    let num = 1;
     num = 12;
 })(Num || (Num = {}));
 // String
 var Str;
 (function (Str) {
-    var str = '哈哈哈哈';
+    let str = '哈哈哈哈';
     str = '嘻嘻嘻嘻';
 })(Str || (Str = {}));
 // Array
 var Arr;
 (function (Arr) {
-    var strArr = ['哈哈哈哈', '嘻嘻嘻嘻'];
-    var numArr = [123, 34, 54];
+    let strArr = ['哈哈哈哈', '嘻嘻嘻嘻'];
+    let numArr = [123, 34, 54];
 })(Arr || (Arr = {}));
 // Any
 var Any;
 (function (Any) {
-    var notSure = 666;
+    let notSure = 666;
     notSure = 'semlinker';
     notSure = false;
     notSure = [123213, 'ssad'];
     // 可以赋值给有类型的 有风险
-    var num = notSure;
+    let num = notSure;
 })(Any || (Any = {}));
 // Unknown
 var Unknown;
 (function (Unknown) {
-    var notSure = 666;
+    let notSure = 666;
     notSure = 'semlinker';
     notSure = false;
     notSure = [123213, 'ssad'];
@@ -48,8 +48,8 @@ var Tuple;
 (function (Tuple) {
     // 数组一般由同种类型的值组成，但有时我们需要在单个变量中存储不同类型的值，这时候我们就可以使用元组
     // 数量不可以多不可以少 类型必须一一对应
-    var arr = [1, '2', false];
-    var tuArr = [1, 'xx'];
+    let arr = [1, '2', false];
+    let tuArr = [1, 'xx'];
 })(Tuple || (Tuple = {}));
 // Void
 var Void;
@@ -57,14 +57,14 @@ var Void;
     // 表示函数没有返回值
     function fn(x) { }
     // 需要注意的是，声明一个 void 类型的变量没有什么作用，因为在严格模式下，它的值只能为 undefined：
-    var unusable = undefined;
+    let unusable = undefined;
 })(Void || (Void = {}));
 // Null 和 Undefined
 var Bare;
 (function (Bare) {
     // TypeScript 里，undefined 和 null 两者有各自的类型分别为 undefined 和 null。
-    var u = undefined;
-    var n = null;
+    let u = undefined;
+    let n = null;
 })(Bare || (Bare = {}));
 // Never
 var Never;

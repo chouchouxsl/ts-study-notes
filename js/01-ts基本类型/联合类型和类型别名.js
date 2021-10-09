@@ -2,14 +2,14 @@
 /**
  * @description: 联合类型: 通常与 null 或 undefined 一起使用
  */
-var sayHello = function (name) {
+const sayHello = (name) => {
     /* ... */
 };
 sayHello('xxxxx');
 sayHello(undefined);
 sayHello(null);
 // 用来约束取值只能是某几个值中的一个。
-var num = 1;
+let num = 1;
 // 可辨识联合
 // 1.可识别的 要求必须都拥有一个都含有的单例属性
 var CarTransmission;
@@ -29,8 +29,8 @@ function evaluatePrice(vehicle) {
             return vehicle.make * 3.15;
     }
 }
-var myTruck = { vType: 'truck', capacity: 9.5 };
+const myTruck = { vType: 'truck', capacity: 9.5 };
 evaluatePrice(myTruck);
-var greet = function (message) {
+let greet = (message) => {
     return message.length;
 };

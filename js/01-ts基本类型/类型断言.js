@@ -15,10 +15,10 @@ function add(x, y) {
  */
 function myfn(str) {
     // const arr: string = str as string
-    var arr = str;
+    const arr = str;
 }
 /**
  * @description: 明确赋值断言
  */
-var x;
+let x;
 console.log('x * 2 :>> ', x * 2);

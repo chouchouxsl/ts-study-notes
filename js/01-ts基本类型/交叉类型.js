@@ -1,11 +1,11 @@
 "use strict";
-var q = {
+let q = {
     a: 123,
     b: '123',
     c: true,
     f: 12
 };
-var abc = {
+let abc = {
     x: {
         d: true,
         e: 'semlinker',

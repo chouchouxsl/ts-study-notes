@@ -24,28 +24,29 @@ function padLeft(value, padding) {
     if (typeof padding === 'string') {
         return padding + value;
     }
-    throw new Error("Expected string or number, got '" + padding + "'.");
+    throw new Error(`Expected string or number, got '${padding}'.`);
 }
-var SpaceRepeatingPadder = /** @class */ (function () {
-    function SpaceRepeatingPadder(numSpaces, name) {
+class SpaceRepeatingPadder {
+    numSpaces;
+    name;
+    constructor(numSpaces, name) {
         this.numSpaces = numSpaces;
         this.name = name;
     }
-    SpaceRepeatingPadder.prototype.getPaddingString = function () {
+    getPaddingString() {
         return Array(this.numSpaces + 1).join(' ');
-    };
-    return SpaceRepeatingPadder;
-}());
-var StringPadder = /** @class */ (function () {
-    function StringPadder(name) {
+    }
+}
+class StringPadder {
+    name;
+    constructor(name) {
         this.name = name;
     }
-    StringPadder.prototype.getPaddingString = function () {
+    getPaddingString() {
         return this.name;
-    };
-    return StringPadder;
-}());
-var padder = new SpaceRepeatingPadder(6, 'xxx');
+    }
+}
+const padder = new SpaceRepeatingPadder(6, 'xxx');
 console.log('padder instanceof SpaceRepeatingPadder :>> ', padder instanceof SpaceRepeatingPadder);
 console.log('padder instanceof SpaceRepeatingPadder :>> ', padder instanceof StringPadder);
 // 自定义类型保护的类型谓词
